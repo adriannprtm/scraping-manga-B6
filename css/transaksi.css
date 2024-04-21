@@ -1,0 +1,39 @@
+.transaksiForm {
+    margin : 80px;
+}
+
+#transaksiForm label {
+    font-weight: bold;
+    font-size: larger;
+}
+
+#transaksiForm input[type="date"],
+#transaksiForm input[type="number"],
+#transaksiForm input[type="text"],
+#transaksiForm select {
+    width: 100%;
+    padding: 8px;
+    border: 2px solid #4a98f7;
+    background-color: #dff0ff;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+#transaksiForm button {
+    background-color: #4a98f7;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#transaksiForm button:hover {
+    background-color: #1e5599;
+}
+
+.form-transaksi{
+    margin-top: 80px; 
+    margin-left: 20px; 
+    margin-right: 20px;
+}

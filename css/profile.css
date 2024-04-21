@@ -1,0 +1,111 @@
+/* Reset default margin and padding */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Profile Header */
+.profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #007bff;
+  color: #fff;
+}
+
+.profile-nav-left {
+  flex-grow: 1;
+  text-align: center;
+  width: 10%;
+}
+
+.profile-nav-left .logo {
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.profile-nav-right {
+  flex-grow: 1;
+  text-align: left;
+  width: 36%;
+}
+
+.profile-nav-right ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.profile-nav-right ul li {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.profile-nav-right ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.profile-nav-right ul li a:hover {
+  color: #000;
+}
+
+main {
+  padding: 20px;
+  margin-top: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  width: 80%; /* Lebar konten */
+  margin: 0 auto; /* Memposisikan konten ke tengah */
+  padding: 20px; /* Padding agar konten terlihat lebih lega */
+  background-color: #f7f7f7; /* Warna latar belakang */
+  border: 2px solid #007bff; /* Border dengan warna biru */
+  border-radius: 10px; /* Membuat ujung border melengkung */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Efek bayangan untuk memberikan kedalaman */
+}
+
+.container h2 {
+  color: #333; /* Warna teks untuk judul */
+}
+
+.container p {
+  color: #666; /* Warna teks untuk paragraf */
+}
+
+.container ul {
+  list-style-type: none; /* Menghilangkan bullet list */
+  padding-left: 0; /* Menghilangkan padding kiri untuk list */
+}
+
+.container ul li {
+  margin-bottom: 10px; /* Jarak antar elemen list */
+}
+
+.container ul li strong {
+  font-weight: bold; /* Membuat teks tebal */
+  color: #007bff; /* Warna teks untuk teks tebal */
+}
+
+.edit-profile-btn {
+  display: inline-block; /* Membuat tombol menjadi inline-block agar tautan dan tombol tidak tumpang tindih */
+  background-color: #007bff; /* Warna latar belakang tombol */
+  color: #fff; /* Warna teks tombol */
+  padding: 10px 15px; /* Padding tombol */
+  border: none; /* Menghilangkan border */
+  border-radius: 5px; /* Membuat ujung tombol melengkung */
+  font-size: 12px; /* Ukuran teks tombol */
+  text-decoration: none; /* Menghilangkan garis bawah teks tautan */
+}
+
+.edit-profile-btn:hover {
+  background-color: #0056b3; /* Warna latar belakang tombol saat disorot */
+}

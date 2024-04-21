@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile</title>
+    <link rel="stylesheet" href="css/profile.css" />
+    <link rel="stylesheet" href="css/home.css" />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+    <script src="js/home.js" defer></script>
+  </head>
+  <body>
+    <div id="loadingScreen" class="loading-screen">
+      <div class="loader"></div>
+    </div>
+    <nav class="nav">
+      <i class="uil uil-bars navOpenBtn"></i>
+      <a href="home.html" class="logo">Money</a>
+
+      <ul class="nav-links">
+        <i class="uil uil-times navCloseBtn"></i>
+        <li><a href="home.html" class="nav-link">Home</a></li>
+        <li><a href="transaksi.html" class="nav-link">Transaksi</a></li>
+        <li><a href="rekap.html" class="nav-link">Rekap</a></li>
+        <li><a href="chart.html" class="nav-link">Grafik</a></li>
+        <li><a href="profile.html" class="nav-link">Profile</a></li>
+        <li><a href="scraping.html" class="nav-link">Scraping Manga</a></li>
+      </ul>
+
+      <!-- Button logout-->
+      <button id="logoutButton" class="btn-logout" onclick="logout()">
+        Logout
+      </button>
+      <i class="uil" id="searchIcon"></i>
+    </nav>
+
+    <main>
+      <div class="container">
+        <img
+          src="img/abc.png"
+          alt="Foto Profil"
+          style="
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+          "
+        />
+        <ul>
+          <h2>John Doe</h2>
+          <li><strong>Umur:</strong> 30 tahun</li>
+          <li><strong>Jenis Kelamin:</strong> Laki-laki</li>
+          <li><strong>Pendidikan:</strong> Sarjana Teknik Informatika</li>
+          <li><strong>Email:</strong> johndoe@example.com</li>
+          <li><strong>Alamat:</strong> 123 Main Street, City</li>
+          <li><strong>Info Tambahan:</strong></li>
+        </ul>
+        <p>
+          "Aplikasi Money Tracker adalah alat yang dirancang untuk membantu
+          pengguna dalam mengelola dan memantau keuangan mereka dengan lebih
+          efektif. Dengan menggunakan aplikasi ini, pengguna dapat mencatat
+          setiap transaksi keuangan yang mereka lakukan, mulai dari pengeluaran
+          sehari-hari hingga pemasukan tambahan. Selain itu, Money Tracker juga
+          menyediakan fitur untuk membuat rekapitulasi keuangan, sehingga
+          pengguna dapat melihat secara langsung seberapa baik mereka mengelola
+          uang mereka dalam periode waktu tertentu. Dengan demikian, Money
+          Tracker membantu pengguna dalam mengidentifikasi pola pengeluaran,
+          mengatur anggaran, dan mencapai tujuan keuangan mereka dengan lebih
+          baik."
+        </p>
+      </div>
+    </main>
+    <footer>
+      <h3>@B6 Proyek1</h3>
+    </footer>
+    <script src="js/login.js"></script>
+    <script src="js/home.js"></script>
+  </body>
+</html>

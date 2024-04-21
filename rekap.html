@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rekap</title>
+    <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/rekap.css" />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script src="js/home.js" defer></script>
+  </head>
+  <body>
+    <div id="loadingScreen" class="loading-screen">
+      <div class="loader"></div>
+    </div>
+    <nav class="nav">
+      <i class="uil uil-bars navOpenBtn"></i>
+      <a href="home.html" class="logo">Money</a>
+
+      <ul class="nav-links">
+        <i class="uil uil-times navCloseBtn"></i>
+        <li><a href="home.html" class="nav-link">Home</a></li>
+        <li><a href="transaksi.html" class="nav-link">Transaksi</a></li>
+        <li><a href="rekap.html" class="nav-link">Rekap</a></li>
+        <li><a href="chart.html" class="nav-link">Grafik</a></li>
+        <li><a href="profile.html" class="nav-link">Profile</a></li>
+        <li><a href="scraping.html" class="nav-link">Scraping Manga</a></li>
+      </ul>
+
+      <button id="logoutButton" class="btn-logout" onclick="logout()">
+        Logout
+      </button>
+      <i class="uil" id="searchIcon"></i>
+    </nav>
+
+    <div class="select-rekap">
+      <label for="rekapPilihan">Jenis Rekap:</label>
+      <select id="jenisRekap">
+        <option value="harian">Harian</option>
+        <option value="mingguan">Mingguan</option>
+        <option value="bulanan">Bulanan</option>
+        <option value="tahunan">Tahunan</option>
+      </select>
+      <button class="button-rekap" onclick="tampilkanRekap()">
+        Tampilkan Rekap
+      </button>
+      <button class="button-rekap" onclick="eksporKeExcel()">
+        Ekspor ke Excel
+      </button>
+    </div>
+    <div id="hasilRekap">
+      <!-- Hasil rekap akan ditampilkan di sini -->
+    </div>
+    <footer>
+      <h3>@B6 Proyek1</h3>
+    </footer>
+    <script src="js/login.js"></script>
+    <script src="js/transaksi.js"></script>
+    <script src="js/rekap.js"></script>
+  </body>
+</html>

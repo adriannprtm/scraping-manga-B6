@@ -1,0 +1,58 @@
+label {
+    font-weight: bold;
+    font-size: larger;
+  }
+  
+  select {
+    width: 100%;
+    padding: 8px;
+    border: 2px solid #4a98f7;
+    background-color: #dff0ff;
+    border-radius: 10px;
+    box-sizing: border-box;
+  }
+  
+  .button-rekap {
+    background-color: #4a98f7;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  button:hover {
+    background-color: #1e5599;
+  }
+
+  .rekap-card {
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.rekap-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.rekap-card h4 {
+    margin: 0;
+    color: #333;
+}
+
+.rekap-card p {
+    color: #666;
+}
+
+.select-rekap{
+  margin-bottom: 20px; 
+  margin-top: 70px; 
+  margin-right: 20px; 
+  margin-left: 20px;
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transaksi</title>
+    <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/transaksi.css" />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  </head>
+  <body>
+    <div id="loadingScreen" class="loading-screen">
+      <div class="loader"></div>
+    </div>
+    <nav class="nav">
+      <i class="uil uil-bars navOpenBtn"></i>
+      <a href="home.html" class="logo">Money</a>
+
+      <ul class="nav-links">
+        <i class="uil uil-times navCloseBtn"></i>
+        <li><a href="home.html" class="nav-link">Home</a></li>
+        <li><a href="transaksi.html" class="nav-link">Transaksi</a></li>
+        <li><a href="rekap.html" class="nav-link">Rekap</a></li>
+        <li><a href="chart.html" class="nav-link">Grafik</a></li>
+        <li><a href="profile.html" class="nav-link">Profile</a></li>
+        <li><a href="scraping.html" class="nav-link">Scraping Manga</a></li>
+      </ul>
+
+      <button id="logoutButton" class="btn-logout" onclick="logout()">
+        Logout
+      </button>
+      <i class="uil" id="searchIcon"></i>
+    </nav>
+    <div class="form-transaksi">
+      <form id="transaksiForm">
+        <label for="tanggal">Tanggal:</label>
+        <input type="date" id="tanggal" name="tanggal" required /><br /><br />
+
+        <label for="tipe">Tipe:</label>
+        <select id="tipe" name="tipe" required>
+          <option value="pengeluaran">Pengeluaran</option>
+          <option value="pemasukan">Pemasukan</option></select
+        ><br /><br />
+
+        <label for="nominal">Nominal:</label>
+        <input type="number" id="nominal" name="nominal" required /><br /><br />
+
+        <label for="kategori">Kategori:</label>
+        <input type="text" id="kategori" name="kategori" required /><br /><br />
+
+        <button type="button" onclick="simpanTransaksi()">Simpan</button>
+      </form>
+    </div>
+    <footer>
+      <h3>@B6 Proyek1</h3>
+    </footer>
+    <script>
+      muatTransaksi();
+    </script>
+    <script src="js/transaksi.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/home.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous">
+    </script>
+  </body>
+</html>

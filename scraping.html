@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chart</title>
+    <link rel="stylesheet" href="css/home.css" />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+  </head>
+  <body>
+    <div id="loadingScreen" class="loading-screen">
+      <div class="loader"></div>
+    </div>
+    <nav class="nav">
+      <i class="uil uil-bars navOpenBtn"></i>
+      <a href="home.html" class="logo">Money</a>
+
+      <ul class="nav-links">
+        <i class="uil uil-times navCloseBtn"></i>
+        <li><a href="home.html" class="nav-link">Home</a></li>
+        <li><a href="transaksi.html" class="nav-link">Transaksi</a></li>
+        <li><a href="rekap.html" class="nav-link">Rekap</a></li>
+        <li><a href="chart.html" class="nav-link">Grafik</a></li>
+        <li><a href="profile.html" class="nav-link">Profile</a></li>
+        <li><a href="scraping.html" class="nav-link">Scraping Manga</a></li>
+      </ul>
+
+      <button id="logoutButton" class="btn-logout" onclick="logout()">
+        Logout
+      </button>
+      <i class="uil" id="searchIcon"></i>
+    </nav>
+    <div class="conteiner">
+        <div>
+            <h3>Crausel</h3>
+        </div>
+        <div style="margin-left: 20px; margin-right: 20px; margin-top: 50px; margin-bottom: 50px;">
+            <table id="mangaTable">
+                <thead>
+                  <tr>
+                    <th>Rank</th>
+                    <th>Title</th>
+                    <th>Score</th>
+                    <th>Genres</th>
+                    <th>Synopsis</th>
+                    <th>Authors</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Data JSON akan dimasukkan di sini -->
+                </tbody>
+              </table>
+        </div>
+    </div>
+    <footer>
+      <h3>@B6 Proyek1</h3>
+    </footer>
+
+    <script src="js/home.js"></script>
+    <script src="js/transaksi.js"></script>
+    <script src="js/login.js"></script>
+    <!-- Tambahkan pustaka jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Tambahkan pustaka DataTables -->
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>   
+    <script>
+        $(document).ready(function() {
+            // Inisialisasi DataTables
+            var table = $('#mangaTable').DataTable();
+        
+            // Ambil data JSON Anda secara dinamis dari file hasil.json
+            $.getJSON('hasil.json', function(data) {
+                // Iterasi melalui data dan tambahkan baris ke dalam tabel
+                for (var i = 0; i < data.length; i++) {
+                    var manga = data[i];
+                    var genreString = manga.genre.join(', ');
+                    var authorString = manga.authors.join(', ');
+        
+                    // Tambahkan baris ke dalam tabel
+                    table.row.add([
+                        manga.rank,
+                        manga.title,
+                        manga.score,
+                        genreString,
+                        manga.synopsis,
+                        authorString
+                    ]).draw(false); // false: supaya tidak menggambar ulang tabel setelah setiap baris ditambahkan
+                }
+            });
+        });
+        
+      </script>
+  </body>
+</html>
