@@ -12,11 +12,11 @@ class MangaSpider(scrapy.Spider):
             rank = mangas.css('td.rank > span.lightLink.top-anime-rank-text::text').get()
             title = mangas.css('td.title > div.detail > h3.manga_h3 > a::text').get()
             score = mangas.css('td.score > div.js-top-ranking-score-col > span::text').get()
-            img_url = mangas.css('td.title > a.hoverinfo_trigger > img::attr(data-src)').get()
             
+            # Extracting detail link
             detail_link = mangas.css('td.title > div.detail > h3.manga_h3 > a::attr(href)').get()
             if detail_link:
-                yield response.follow(detail_link, callback=self.parse_detail, meta={'rank': rank, 'title': title, 'score': score, 'img_url': img_url})
+                yield response.follow(detail_link, callback=self.parse_detail, meta={'rank': rank, 'title': title, 'score': score})
             
         next_page = response.css("a.link-blue-box.next::attr(href)").get()
         if next_page is not None:
@@ -27,10 +27,14 @@ class MangaSpider(scrapy.Spider):
         rank = response.meta['rank']
         title = response.meta['title']
         score = response.meta['score']
-        img_url = response.meta['img_url']
         genre = response.css('span[itemprop="genre"]::text').getall()
         synopsis = response.css('span[itemprop="description"]::text').get()
+
+        # Extracting authors
         authors = response.css('span.dark_text:contains("Authors:") ~ a::text').getall()
+
+        # Extracting image from review
+        img_url = response.css('div.leftside a[href*="/pics"] img::attr(data-src)').get()
 
         yield {
             'rank': rank,

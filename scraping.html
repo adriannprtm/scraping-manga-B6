@@ -44,6 +44,7 @@
                 <thead>
                   <tr>
                     <th>Rank</th>
+                    <th>Image</th>
                     <th>Title</th>
                     <th>Score</th>
                     <th>Genres</th>
@@ -52,7 +53,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <!-- Data JSON akan dimasukkan di sini -->
+                  <!-- Data JSON -->
                 </tbody>
               </table>
         </div>
@@ -64,32 +65,28 @@
     <script src="js/home.js"></script>
     <script src="js/transaksi.js"></script>
     <script src="js/login.js"></script>
-    <!-- Tambahkan pustaka jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Tambahkan pustaka DataTables -->
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>   
+    <!-- datatables -->
     <script>
         $(document).ready(function() {
-            // Inisialisasi DataTables
             var table = $('#mangaTable').DataTable();
         
-            // Ambil data JSON Anda secara dinamis dari file hasil.json
             $.getJSON('hasil.json', function(data) {
-                // Iterasi melalui data dan tambahkan baris ke dalam tabel
                 for (var i = 0; i < data.length; i++) {
                     var manga = data[i];
                     var genreString = manga.genre.join(', ');
                     var authorString = manga.authors.join(', ');
         
-                    // Tambahkan baris ke dalam tabel
                     table.row.add([
                         manga.rank,
+                        `<img src="${manga.img_url}" alt="Manga Image" width="150">`,
                         manga.title,
                         manga.score,
                         genreString,
                         manga.synopsis,
                         authorString
-                    ]).draw(false); // false: supaya tidak menggambar ulang tabel setelah setiap baris ditambahkan
+                    ]).draw(false); 
                 }
             });
         });
