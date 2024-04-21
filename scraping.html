@@ -4,13 +4,36 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chart</title>
+    <title>Scraping Manga</title>
     <link rel="stylesheet" href="css/home.css" />
     <link
       rel="stylesheet"
       href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
     />
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css"
+    />
+    <style>
+      .carousel-item {
+        text-align: center;
+      }
+      .carousel-item p {
+        display: none;
+      }
+      .carousel-item:hover p {
+        display: block;
+      }
+      .carousel-control-prev-icon,
+      .carousel-control-next-icon {
+        filter: invert(100%);
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
   </head>
   <body>
     <div id="loadingScreen" class="loading-screen">
@@ -36,27 +59,57 @@
       <i class="uil" id="searchIcon"></i>
     </nav>
     <div class="conteiner">
-        <div>
-            <h3>Crausel</h3>
+      <div class="container mt-5">
+        <h2 class="text-center mb-4">Manga Carousel</h2>
+        <div id="mangaCarousel" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <!-- Data JSON akan dimasukkan di sini -->
+          </div>
+          <a
+            class="carousel-control-prev"
+            href="#mangaCarousel"
+            role="button"
+            data-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a
+            class="carousel-control-next"
+            href="#mangaCarousel"
+            role="button"
+            data-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
         </div>
-        <div style="margin-left: 20px; margin-right: 20px; margin-top: 50px; margin-bottom: 50px;">
-            <table id="mangaTable">
-                <thead>
-                  <tr>
-                    <th>Rank</th>
-                    <th>Image</th>
-                    <th>Title</th>
-                    <th>Score</th>
-                    <th>Genres</th>
-                    <th>Synopsis</th>
-                    <th>Authors</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <!-- Data JSON -->
-                </tbody>
-              </table>
-        </div>
+      </div>
+      <div
+        style="
+          margin-left: 20px;
+          margin-right: 20px;
+          margin-top: 50px;
+          margin-bottom: 50px;
+        "
+      >
+        <table id="mangaTable">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Image</th>
+              <th>Title</th>
+              <th>Score</th>
+              <th>Genres</th>
+              <th>Synopsis</th>
+              <th>Authors</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Data JSON -->
+          </tbody>
+        </table>
+      </div>
     </div>
     <footer>
       <h3>@B6 Proyek1</h3>
@@ -66,31 +119,59 @@
     <script src="js/transaksi.js"></script>
     <script src="js/login.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>   
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
     <!-- datatables -->
     <script>
-        $(document).ready(function() {
-            var table = $('#mangaTable').DataTable();
-        
-            $.getJSON('hasil.json', function(data) {
-                for (var i = 0; i < data.length; i++) {
-                    var manga = data[i];
-                    var genreString = manga.genre.join(', ');
-                    var authorString = manga.authors.join(', ');
-        
-                    table.row.add([
-                        manga.rank,
-                        `<img src="${manga.img_url}" alt="Manga Image" width="150">`,
-                        manga.title,
-                        manga.score,
-                        genreString,
-                        manga.synopsis,
-                        authorString
-                    ]).draw(false); 
-                }
-            });
+      $(document).ready(function () {
+        var table = $("#mangaTable").DataTable();
+
+        $.getJSON("hasil.json", function (data) {
+          for (var i = 0; i < data.length; i++) {
+            var manga = data[i];
+            var genreString = manga.genre.join(", ");
+            var authorString = manga.authors.join(", ");
+
+            table.row
+              .add([
+                manga.rank,
+                `<img src="${manga.img_url}" alt="Manga Image" width="150">`,
+                manga.title,
+                manga.score,
+                genreString,
+                manga.synopsis,
+                authorString,
+              ])
+              .draw(false);
+          }
         });
-        
-      </script>
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        $.getJSON("hasil.json", function (data) {
+          var carouselInner = $("#mangaCarousel .carousel-inner");
+
+          for (var i = 0; i < data.length; i++) {
+            var manga = data[i];
+            var activeClass = i === 0 ? "active" : "";
+            var genreString = manga.genre.join(", ");
+            var authorString = manga.authors.join(", ");
+
+            var carouselItem = `
+                  <div class="carousel-item ${activeClass}">
+                    <img src="${manga.img_url}" class="d-block mx-auto" alt="Manga Image" style="max-height: 300px;">
+                    <h5 class="mt-3">${manga.title}</h5>
+                    <p>Rating: ${manga.score}</p>
+                    <p>Synopsis: ${manga.synopsis}</p>
+                  </div>
+                `;
+            carouselInner.append(carouselItem);
+          }
+        });
+      });
+    </script>
   </body>
 </html>
